@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-rs
+  labels:
+    name: my-app
+    type: front-end
+spec:
+  template:
+    metadata:
+      name: myapp-pod-2
+      labels:
+        app: my-app
+        costcenter: amer
+        location: aus
+        type: front-end
+        test: true
+
+    spec:
+        containers:
+          - name: nginx-container
+            image: nginx
+  replicas: 4
+  selector:
+    matchLabels:
+      type: front-end
